@@ -5,6 +5,10 @@ body{
     font-family: 'Modak', cursive;
 }
 
+h1{
+   color: #3e5551;
+}
+
 
 table{
     margin: auto;
@@ -42,19 +46,57 @@ table{
 
 .bar{
     background-color: #fcbad3;
-    width: 300px;
+    width: 340px;
+    height: 50px;
     padding: 20px;
     margin: auto;
     font-size: 150%;
-    cursor: pointer;
 }
 
 .smiley{
-    position: relative;
+    position: absolute;
+    left: 48%;
+    cursor: pointer;
+}
+
+.lives{
+    position: absolute;
+    left: 56%;
+    top: 106px;
+}
+
+.hints{
+    position: absolute;
+    width: 90px;
+    left: 35%;
+    cursor: pointer;
+
+}
+
+/* .hint{
+    position: absolute;
+    width: 90px;
+    left: 32%;
+    cursor: pointer;
+
+} */
+
+.hint1{
+    position: absolute;
+    left: 7%;
+}
+
+.hint2{
+    position: absolute;
+    left: 33%;
+}
+
+.hint3{
+    position: absolute;
+    left: 59%;
 }
 
 img{
     width: 400px;
     opacity: 0.6;
-
 }

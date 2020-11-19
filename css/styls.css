@@ -1,0 +1,60 @@
+body{
+    text-align: center;
+    margin: 0;
+    background-color: #aadcee;
+    font-family: 'Modak', cursive;
+}
+
+
+table{
+    margin: auto;
+    background-color: #54746e;
+    color: white;
+    border-color: #e4f9f5;
+    margin-top: 10px;
+}
+
+.board td {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    transition: .3s;
+    
+}
+
+.shown {
+    background-color: #11999e;
+}
+
+.bomb {
+    background-color: rgb(248, 6, 6);
+}
+
+.level-button{
+    padding: 5px;
+    border: none;
+    background-color: #30e3ca;
+    margin-top: 10px;
+    border-radius: 10%;
+    margin-left: 10px;
+    font-family: 'Modak', cursive;
+}
+
+.bar{
+    background-color: #fcbad3;
+    width: 300px;
+    padding: 20px;
+    margin: auto;
+    font-size: 150%;
+    cursor: pointer;
+}
+
+.smiley{
+    position: relative;
+}
+
+img{
+    width: 400px;
+    opacity: 0.6;
+
+}

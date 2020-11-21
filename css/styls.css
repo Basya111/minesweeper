@@ -1,7 +1,9 @@
 body{
     text-align: center;
     margin: 0;
-    background-color: #aadcee;
+    background: rgb(248,250,250);
+background: linear-gradient(0deg, rgba(248,250,250,1) 37%, rgba(110,219,219,1) 58%, rgba(104,218,218,1) 73%, rgba(7,222,165,1) 97%);
+    background-repeat: no-repeat;
     font-family: 'Modak', cursive;
 }
 
@@ -37,7 +39,7 @@ table{
 .level-button{
     padding: 5px;
     border: none;
-    background-color: #30e3ca;
+    background-color: #14e9cc;
     margin-top: 10px;
     border-radius: 10%;
     margin-left: 10px;
@@ -45,18 +47,53 @@ table{
 }
 
 .bar{
-    background-color: #fcbad3;
+    background-color: rgb(212 157 228);
     width: 340px;
     height: 50px;
     padding: 20px;
     margin: auto;
     font-size: 150%;
+    border-radius: 10%;
 }
 
 .smiley{
     position: absolute;
     left: 48%;
     cursor: pointer;
+}
+
+.safe-click-func{
+    background-color: #30e3ca;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:linear-gradient(to bottom, #bddbfa 5%, #d976ed 100%);
+	background-color:#bddbfa;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #539ce6;
+    margin-top: 10px;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #d976ed 5%, #bddbfa 100%);
+	background-color:#d976ed;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.safe-click h5{
+    margin-block-end: 5px;
+    margin-block-start: 5px;
 }
 
 .lives{
@@ -96,7 +133,13 @@ table{
     left: 59%;
 }
 
+
 img{
-    width: 400px;
-    opacity: 0.6;
+    width: 340px;
+    opacity: 0.9;
+    top: 66%;
+    /* position: absolute; */
+    left: 80%;
+    display: inline-block;
+    margin-left: 426px;
 }

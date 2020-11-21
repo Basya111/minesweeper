@@ -11,21 +11,7 @@ function createMat(rows, cols) {
     return mat
   }
 
-  function printMat(mat, selector) {
-    var strHTML = '<table border="0"><tbody>';
-    for (var i = 0; i < mat.length; i++) {
-      strHTML += '<tr>';
-      for (var j = 0; j < mat[0].length; j++) {
-        var cell = mat[i][j];
-        var className = 'cell cell' + i + '-' + j;
-        strHTML += '<td class="' + className + '"> ' + cell + ' </td>'
-      }
-      strHTML += '</tr>'
-    }
-    strHTML += '</tbody></table>';
-    var elContainer = document.querySelector(selector);
-    elContainer.innerHTML = strHTML;
-  }
+
 
 function countNeighbors(cellI, cellJ, board) {
     var neighborsSum = 0;
@@ -58,3 +44,28 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
+
+
+  //--------------- timer-----------------
+function startTimer() {
+  if (!gStartTime) gStartTime = Date.now()
+  gIntervalId = setInterval(updateTime, 100)
+}
+
+function stopTimer() {
+  clearInterval(gIntervalId)
+  gIntervalId = undefined;
+  
+}
+
+function updateTime() {
+  var diff = Date.now() - gStartTime
+  var seconds = diff / 1000
+  secondsArr = (seconds + '').split('.')
+  var elTime = document.querySelector('.stopwatch')
+  var time = seconds < 10 ? '0' + parseInt(seconds) : parseInt(seconds)
+  time += ':'
+  time += secondsArr[1] < 10 ? '0' + secondsArr[1] : secondsArr[1] || '00'
+
+  elTime.innerText = time
+}

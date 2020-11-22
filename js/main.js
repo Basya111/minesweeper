@@ -174,9 +174,9 @@ function countNeighbors(cellI, cellJ, board) {
 // reveal all the neighbors ofan empty cell
 function expandShown(board, cellI, cellJ) {
 
-    // if(cellI < 0 || cellI > board.length || cellJ < 0 || cellJ > board.length) return
-    // if(board[cellI][cellJ].isMine) return
-    // if(board[cellI][cellJ].minesAroundCount > 0) return
+    if (cellI < 0 || cellI > board.length - 1 || cellJ < 0 || cellJ > board.length - 1) return
+    if (board[cellI][cellJ].isMine) return
+    if (board[cellI][cellJ].minesAroundCount > 0) return
 
 
     for (var i = cellI - 1; i <= cellI + 1; i++) {
@@ -184,16 +184,15 @@ function expandShown(board, cellI, cellJ) {
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
             if (i === cellI && j === cellJ) continue;
             if (j < 0 || j >= board[i].length) continue;
-            var currCell = board[i][j]
-            if (!isHintOn) {
-                board[i][j].isShown = true;
-                gGame.shownCount++
-            }
             var pos = { i: i, j: j }
             renderCell(pos)
-            // if (currCell.minesAroundCount === 0) {
-            //     expandShown(board, i, j)
-            // }
+            if(!board[i][j].isShown){
+                console.log(pos);
+                board[i][j].isShown = true;
+                gGame.shownCount++
+                expandShown(board, i, j)
+                
+            }
         }
     }
 }
@@ -376,16 +375,25 @@ function getHint(elHint) {
     elHint.innerText = HINT2;
     var cellPos = getPos(gSelectedCell.id)
     // var currCell = gBoard[cellPos.i][cellPos.j]
-    expandShown(gBoard, cellPos.i, cellPos.j)
+    expandShownHint(gBoard, cellPos.i, cellPos.j)
     setTimeout(unExpandShown, 1000, gBoard, cellPos.i, cellPos.j)
 
 }
 
-function getPos(className) {
-    var parts = className.split('-')
-    var pos = { i: +parts[0], j: +parts[1] };
-    return pos;
+function expandShownHint(board, cellI, cellJ) {
+
+    for (var i = cellI - 1; i <= cellI + 1; i++) {
+        if (i < 0 || i >= board.length) continue;
+        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
+            if (i === cellI && j === cellJ) continue;
+            if (j < 0 || j >= board[i].length) continue;
+            var pos = { i: i, j: j }
+            renderCell(pos)
+            
+        }
+    }
 }
+
 
 function unExpandShown(board, cellI, cellJ) {
     isHintOn = !isHintOn
@@ -396,7 +404,7 @@ function unExpandShown(board, cellI, cellJ) {
             if (j < 0 || j >= board[i].length) continue;
             var pos = { i: i, j: j }
             if (board[i][j].isShown || board[i][j].isMarked) continue
-            else{
+            else {
                 unRenderCell(pos);
             }
             
@@ -410,16 +418,21 @@ function unRenderCell(position) {
     var elCell = document.querySelector('.' + getClassName(position));
     elCell.classList.remove('shown')
     elCell.innerHTML = ''
-
+    
 }
 
 function resetHints() {
     var elHints = document.querySelectorAll('.hint');
-    for(var i = 0; i < elHints.length; i++){
+    for (var i = 0; i < elHints.length; i++) {
         var elHint = elHints[i]
         elHint.innerText = HINT;
     }
-
+    
 }
 
+function getPos(className) {
+    var parts = className.split('-')
+    var pos = { i: +parts[0], j: +parts[1] };
+    return pos;
+}
 

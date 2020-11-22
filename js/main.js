@@ -173,6 +173,12 @@ function countNeighbors(cellI, cellJ, board) {
 }
 // reveal all the neighbors ofan empty cell
 function expandShown(board, cellI, cellJ) {
+
+    // if(cellI < 0 || cellI > board.length || cellJ < 0 || cellJ > board.length) return
+    // if(board[cellI][cellJ].isMine) return
+    // if(board[cellI][cellJ].minesAroundCount > 0) return
+
+
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= board.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
@@ -186,7 +192,6 @@ function expandShown(board, cellI, cellJ) {
             var pos = { i: i, j: j }
             renderCell(pos)
             // if (currCell.minesAroundCount === 0) {
-            //     console.log('hey');
             //     expandShown(board, i, j)
             // }
         }

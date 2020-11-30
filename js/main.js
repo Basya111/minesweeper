@@ -240,7 +240,7 @@ function clickLevel(idx) {
                 break
         }
     }
-    init()
+    resetGame()
 }
 
 // check for win
@@ -275,7 +275,7 @@ function cellMarked(elCell) {
 }
 
 function gameOver() {
-    if (gLives > 0) {
+    if (gLives > 1) {
         gLives--;
         deleteHeart(gLives)
         console.log('gLives', gLives);
@@ -290,6 +290,8 @@ function gameOver() {
                     var elCell = document.querySelector('.' + getClassName(pos));
                     elCell.innerText = MINE;
                     gBoard[i][j].isShown = true;
+                    gLives--
+                    deleteHeart(gLives)
                 }
             }
         }
